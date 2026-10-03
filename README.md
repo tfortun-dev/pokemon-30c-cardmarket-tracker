@@ -28,3 +28,5 @@ Le bouton **Lancer une collecte** ouvre directement le workflow GitHub Actions p
 
 ## Limite
 Cardmarket peut bloquer les IP de GitHub Actions. Le projet le signale explicitement plutôt que d'utiliser des données d'une autre langue.
+
+> Automatisation initialisée : collecte horaire + publication GitHub Pages.
