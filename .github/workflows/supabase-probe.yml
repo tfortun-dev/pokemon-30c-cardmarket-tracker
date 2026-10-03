@@ -1,0 +1,27 @@
+name: Diagnostic Supabase Cardmarket
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/supabase-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Appeler la fonction Supabase
+        shell: bash
+        run: |
+          python - <<'PY'
+          import urllib.request
+          u="https://eukjpxrqdzpvihzxpjtb.supabase.co/functions/v1/cardmarket-probe"
+          with urllib.request.urlopen(u, timeout=60) as r:
+              print(r.status)
+              print(r.read().decode("utf-8","replace"))
+          PY
