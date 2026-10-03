@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "set": "30e Anniversaire / 30C",
+  "expected_cards": 191,
+  "language": "fr",
+  "language_id": "2",
+  "condition_filter": "all",
+  "updated_at": null,
+  "status": "waiting_first_run",
+  "discovered_cards": 0,
+  "fresh_cards": 0,
+  "errors_count": 0,
+  "cards": []
+}
