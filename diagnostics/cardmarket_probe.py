@@ -3,6 +3,8 @@ import argparse, re, sys, urllib.request, urllib.error
 from html import unescape
 
 URLS = [
+    ("api-product","https://api.cardmarket.com/ws/v2.0/output.json/products/1"),
+    ("api-article","https://api.cardmarket.com/ws/v2.0/output.json/articles/1"),
     ("spoiler-en","https://www.cardmarket.com/en/Pokemon/Spoilers/30th-Celebration"),
     ("singles-en","https://www.cardmarket.com/en/Pokemon/Products/Singles/30th-Celebration"),
     ("gengar-en-frfilter","https://www.cardmarket.com/en/Pokemon/Products/Singles/30th-Celebration/Gengar-ex-V2-30C154?language=2&sortBy=price&sortDir=asc"),
