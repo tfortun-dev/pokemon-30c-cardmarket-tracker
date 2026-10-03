@@ -1,0 +1,38 @@
+name: Diagnostic accès Cardmarket
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'diagnostics/**'
+      - '.github/workflows/probe.yml'
+permissions:
+  contents: read
+jobs:
+  http:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: HTTP direct + headers navigateur
+        run: python diagnostics/cardmarket_probe.py
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: |
+          pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Playwright
+        run: python diagnostics/cardmarket_probe.py --browser
